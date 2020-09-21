@@ -1,0 +1,25 @@
+{
+  "name": "isitnice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akump/isitnice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akump/isitnice/issues"
+  },
+  "type": "module",
+  "homepage": "https://github.com/akump/isitnice#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "superagent": "^6.1.0"
+  }
+}
