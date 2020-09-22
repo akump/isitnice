@@ -14,7 +14,7 @@ app.get('/', (req, res) => res.sendFile(path.join(`${__dirname}/assets/index.htm
 
 app.get('/isNice', async (req, res) => {
     const { body } = await superagent.post(`api.openweathermap.org/data/2.5/weather?lat=${req.query.lat}&lon=${req.query.lon}&units=imperial&appid=${process.env.API_KEY}`);
-    res.send(body);
+    res.send(body.main);
 });
 
 
