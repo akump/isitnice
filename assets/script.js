@@ -1,18 +1,15 @@
 
 const status = document.querySelector('#status');
-let divCount = 0;
 
-function appendText(text) {
-    var para = document.createElement("p");
-    var node = document.createTextNode(text);
+const appendText = function (text) {
+    const para = document.createElement('p');
+    const node = document.createTextNode(text);
     para.appendChild(node);
     document.body.appendChild(para);
 }
 
-async function success(position) {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
-
+const success = async function ({ coords }) {
+    const { latitude, longitude } = coords;
     appendText(`Location found.`);
 
     const response = await fetch(`/isNice?lat=${latitude}&lon=${longitude}`, {
@@ -32,7 +29,7 @@ async function success(position) {
     }
 }
 
-function error() {
+const error = function () {
     status.textContent = 'Unable to retrieve your location';
 }
 
