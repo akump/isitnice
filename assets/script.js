@@ -1,4 +1,3 @@
-
 const httpOptions = {
     mode: 'cors',
     cache: 'no-cache',

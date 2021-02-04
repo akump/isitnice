@@ -17,5 +17,4 @@ app.get('/isNice', async (req, res) => {
     res.send(body.main);
 });
 
-
 app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
