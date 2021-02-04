@@ -7,27 +7,30 @@ const httpOptions = {
 };
 
 const status = document.querySelector('#status');
-const is69 = num => num > 69 && num < 70;
 const error = () => status.textContent = 'Unable to retrieve your location';
 
-const appendText = function (text) {
-    const para = document.createElement('p');
+const appendText = function (text, tag = 'p') {
+    const para = document.createElement(tag);
     const node = document.createTextNode(text);
     para.appendChild(node);
     document.body.appendChild(para);
 }
 
 const success = async function ({ coords }) {
-    appendText(`Location found.`);
+    appendText(`Found`);
     const { latitude, longitude } = coords;
 
     const response = await fetch(`/isNice?lat=${latitude}&lon=${longitude}`, { method: 'GET', ...httpOptions });
-    const { temp } = await response.json();
+    let { temp } = await response.json();
+    temp = Math.round(temp);
+    let distnanceTo69 = 69 - temp;
 
-    if (is69(temp)) {
-        appendText(`It's currently a wonderful ${temp}° 👌`);
+    if (temp === 69) {
+        appendText(`YES`, 'h1');
+        appendText(`${temp}° 👌`);
     } else {
-        appendText(`Yikes it's ${temp}° out there. Maybe one day it'll be 69° 👌`);
+        appendText(`NO`, 'h1');
+        appendText(`Sadly it's ${temp}° outside. ${distnanceTo69}° away from the perfect temperature 😢`);
     }
 }
 
